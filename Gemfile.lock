@@ -103,6 +103,7 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.6.0)
     docile (1.4.1)
+    dotenv (3.1.7)
     drb (2.2.1)
     erubi (1.13.1)
     et-orbi (1.2.11)
@@ -375,6 +376,7 @@ DEPENDENCIES
   capybara
   cuprite
   debug
+  dotenv
   factory_bot_rails
   importmap-rails
   jbuilder
