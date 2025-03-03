@@ -18,6 +18,7 @@ jobs:
       postgres:
         image: postgres:16
         env:
+          POSTGRES_DB: quadro_vagas_rb_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         ports:
