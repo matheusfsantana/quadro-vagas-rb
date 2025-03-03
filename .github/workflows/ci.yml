@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
-      DB_HOST: db
+      DB_HOST: localhost
       DB_USERNAME: postgres
       DB_PASSWORD: postgres
     services:
-      db:
+      postgres:
         image: postgres:16
         env:
           POSTGRES_USER: postgres
