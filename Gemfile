@@ -51,10 +51,10 @@ group :development, :test do
   gem "simplecov", require: false
   gem "factory_bot_rails"
   gem "shoulda-matchers"
+  gem "dotenv"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
-
