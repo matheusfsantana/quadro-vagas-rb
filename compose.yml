@@ -10,8 +10,13 @@ services:
       - psql-data:/var/lib/postgresql/data
 
   web:
-    build: .
-    command: bash -c "rails s -p 3000 -b '0.0.0.0'"
+    tty: true
+    stdin_open: true
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "bash bin/entrypoint.sh"
+
     environment:
       DB_HOST: db
       DB_USERNAME: postgres
