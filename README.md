@@ -1,24 +1,58 @@
-# README
+# Quadro de Vagas
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Como executar a aplicação
+Para executar a aplicação com docker, execute:
 
-* Ruby version
+```
+  docker compose up -d
+```
 
-* System dependencies
+## Como funciona?
 
-* Configuration
+O arquivo compose.yml está configurado para provisionar um container para o banco de dados postgres e um container para a nossa aplicação rails, ele faz o build do arquivo Dockerfile.dev e executa o arquivo bin/entrypoint.sh que faz a execução da aplicação em modo de desenvolvimento e acessivel em <a href="http://localhost:3000">localhost:3000</a>
 
-* Database creation
 
-* Database initialization
+## Executar os testes
 
-* How to run the test suite
+Com o containers de pé, execute:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+  docker compose exec web rspec
+```
 
-* Deployment instructions
+## Executar o rubocop 
 
-* ...
+Com os containers de pé, execute:
+
+```
+  docker compose exec web rubocop
+```
+
+## Interromper containers
+
+Para interromper os containers execute:
+
+```
+  docker compose down
+```
+
+## Comandos Úteis:
+
+Para rebuildar a imagem docker ao subir o container execute:
+
+```
+  docker compose up --build
+```
+
+Para remover todos os containers inativos execute:
+
+```
+  docker rm $(docker ps -aq)
+```
+
+Para remover todas as imagens criadas execute
+
+```
+  docker rmi (docker images -aq)
+```
