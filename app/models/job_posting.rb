@@ -22,4 +22,20 @@ class JobPosting < ApplicationRecord
 
   validates :title, :salary, :salary_currency, :salary_period, :company_profile, :work_arrangement, :description, presence: true
   validates :job_location, presence: true, if: -> { in_person? || hybrid? }
+
+  def self.enum_string_to_symbol(value)
+    case value.to_s.downcase
+    when "daily", "diario" then :daily
+    when "weekly", "semanal" then :weekly
+    when "monthly", "mensal" then :monthly
+    when "yearly", "anual" then :yearly
+    when "usd" then :usd
+    when "eur" then :eur
+    when "brl" then :brl
+    when "remote", "remoto" then :remote
+    when "hybrid", "híbrido" then :hybrid
+    when "in_person", "presencial" then :in_person
+    else nil
+    end
+  end
 end
