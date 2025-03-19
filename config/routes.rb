@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
   resources :company_profiles, only: [ :show, :new, :create ]
   resources :job_postings, only: %i[show new create]
-  resources :massive_loads, only: %i[new create]
+  resources :massive_load_inputs, only: %i[new create show] do
+    member do
+      get "download_report"
+    end
+  end
   get "search", to: "home#search", as: :search_jobs, param: :query
 end

@@ -33,7 +33,7 @@ class JobPosting < ApplicationRecord
     when "eur" then :eur
     when "brl" then :brl
     when "remote", "remoto" then :remote
-    when "hybrid", "híbrido" then :hybrid
+    when "hybrid", "híbrido", "hibrido" then :hybrid
     when "in_person", "presencial" then :in_person
     else nil
     end

@@ -1,0 +1,7 @@
+<div class="flex flex-col gap-8 mx-auto">
+  <h1>Relatório de Importação <%= @massive_load_input.id %> </h1>
+
+  <%= turbo_stream_from "report_count_#{@massive_load_input.id}" %>
+
+  <%= render "massive_load_inputs/report_count", massive_load_input: @massive_load_input %>
+</div>

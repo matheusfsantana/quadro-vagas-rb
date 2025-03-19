@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_11_170530) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_17_184914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_trgm"
@@ -93,6 +93,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_11_170530) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "massive_load_inputs", force: :cascade do |t|
+    t.integer "status"
+    t.integer "total_rows"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "massive_load_reports", force: :cascade do |t|
+    t.bigint "massive_load_input_id", null: false
+    t.integer "record_type"
+    t.integer "status"
+    t.integer "row_number"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["massive_load_input_id"], name: "index_massive_load_reports_on_massive_load_input_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "ip_address"
@@ -119,5 +137,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_11_170530) do
   add_foreign_key "job_postings", "company_profiles"
   add_foreign_key "job_postings", "experience_levels"
   add_foreign_key "job_postings", "job_types"
+  add_foreign_key "massive_load_reports", "massive_load_inputs"
   add_foreign_key "sessions", "users"
 end
